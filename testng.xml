@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="/home/ranjitha/Documents/workspace/InvestmentCenter">
+        <classes>
+            <class name="com.investmentcenter.automate.test.AdviserGuidePDF">
+                <methods>
+                    <include name="shouldOpenPdfInNewWindowWhileClickingOnChargesLink"/>
+                </methods>
+            </class>
+            <class name="com.investmentcenter.automate.test.AdviserRegistrationValidation">
+                <methods>
+                    <include name="shouldTestRegistrationPageTitle"/>
+                    <include name="shouldTestErrorMessageWhenFsrIsEmpty"/>
+                    <include name="shouldTestErrorMessageWhenFsrIsInvalid"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
