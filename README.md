@@ -1,8 +1,8 @@
-**Investment center **
+**Investment center**
 
 Techonologies and Tools used: Java8, Selenium, geckoDriver, log4j2 and TestNG.
 
-Steps to execute the test cases:
+**Steps to execute the test cases:**
 
 1. Clone the git repository
 2. Update the data.properties file with absolute gecko driver path
