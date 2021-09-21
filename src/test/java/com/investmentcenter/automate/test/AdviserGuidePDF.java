@@ -1,5 +1,10 @@
 package com.investmentcenter.automate.test;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
 import com.investmentcenter.automate.BaseUtil.SeleniumDriver;
 import com.investmentcenter.automate.pageobjects.ChargesPage;
 import com.investmentcenter.automate.pageobjects.HomePage;
@@ -13,27 +18,21 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
 public class AdviserGuidePDF extends SeleniumDriver {
 
-    private static final Logger log = LogManager.getLogger(AdviserGuidePDF.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(AdviserGuidePDF.class.getName());
     private WebDriver driver = null;
 
     @BeforeTest
     public void initialise() {
         driver = initialize();
-        log.info("Browser is initialised");
+        LOGGER.info("Browser is initialised");
     }
 
     @AfterTest
     public void tearDown() {
         driver.quit();
-        log.info("Browser is closed!!");
+        LOGGER.info("Browser is closed!!");
     }
 
     @Test
@@ -52,7 +51,7 @@ public class AdviserGuidePDF extends SeleniumDriver {
         chargePage.getChargesPage().click();
 
         final String parent = driver.getWindowHandle();
-        log.debug("parent window: ", parent);
+        LOGGER.debug("parent window: ", parent);
         final Set<String> windowHandles = driver.getWindowHandles();
 
         final Iterator<String> iterator = windowHandles.iterator();
@@ -65,7 +64,7 @@ public class AdviserGuidePDF extends SeleniumDriver {
                 windowsTitles.add(title);
             }
         }
-        System.out.println(windowsTitles);
+        LOGGER.info("window title : {}", windowsTitles);
         Assert.assertTrue(windowsTitles.contains("https://www.investcentre.co.uk/sites/default/files/AJBIC_charges_and_rates.pdf"));
     }
 }

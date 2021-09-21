@@ -12,8 +12,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class SeleniumDriver {
 
-    private static Logger LOGGER = LogManager.getLogger(SeleniumDriver.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(SeleniumDriver.class.getName());
     private static Properties prop;
+    private WebDriver driver;
 
     static {
         prop = new Properties();
@@ -24,8 +25,6 @@ public class SeleniumDriver {
             LOGGER.error("Exception thrown while loading properties", e);
         }
     }
-
-    private WebDriver driver;
 
     public static Properties getProperties() {
         return prop;
@@ -38,7 +37,7 @@ public class SeleniumDriver {
             driver = new ChromeDriver();
         } else {
             System.setProperty("webdriver.gecko.driver", prop.getProperty("selenium.browser.mozilla"));
-            System.setProperty("webdriver.firefox.bin", "/Applications/Firefox 2.app/Contents/MacOS/firefox-bin");
+            System.setProperty("webdriver.firefox.bin", prop.getProperty("browser.mozilla.path"));
             driver = new FirefoxDriver();
         }
         return driver;
