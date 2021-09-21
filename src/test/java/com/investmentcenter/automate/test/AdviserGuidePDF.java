@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -20,13 +21,19 @@ import java.util.Set;
 
 public class AdviserGuidePDF extends SeleniumDriver {
 
-    private static Logger log = LogManager.getLogger(AdviserGuidePDF.class.getName());
+    private static final Logger log = LogManager.getLogger(AdviserGuidePDF.class.getName());
     private WebDriver driver = null;
 
     @BeforeTest
-    public void initialise() throws IOException {
+    public void initialise() {
         driver = initialize();
         log.info("Browser is initialised");
+    }
+
+    @AfterTest
+    public void tearDown() {
+        driver.quit();
+        log.info("Browser is closed!!");
     }
 
     @Test
@@ -54,11 +61,11 @@ public class AdviserGuidePDF extends SeleniumDriver {
             final String childWindow = iterator.next();
             if (!parent.equals(childWindow)) {
                 driver.switchTo().window(childWindow);
-                final String title = driver.switchTo().window(childWindow).getTitle();
+                final String title = driver.switchTo().window(childWindow).getCurrentUrl();
                 windowsTitles.add(title);
             }
         }
         System.out.println(windowsTitles);
-        Assert.assertTrue(windowsTitles.contains("PDF.js viewer"));
+        Assert.assertTrue(windowsTitles.contains("https://www.investcentre.co.uk/sites/default/files/AJBIC_charges_and_rates.pdf"));
     }
 }

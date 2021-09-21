@@ -7,8 +7,9 @@ import org.openqa.selenium.WebElement;
 public class HomePage {
 
     private final WebDriver driver;
-    private final By charges = By.xpath("/html/body/div[2]/div/div/div[3]/main/div/section[1]/article/section[4]/div/div[1]/div/div[2]/div[2]/div/div/a");
-    private final By register = By.xpath("//header/div[1]/div[1]/div[2]/nav[2]/ul[1]/li[1]/a[1]");
+    private final By charges = By.xpath("//a[@href='/platform/charges' and @class='button waves-effect' and text()='FIND OUT MORE']");
+    private final By register = By.xpath("//ul[@class='menu'] //a[@href='/AdviserRegistration/EnterFSRNumber' and @class='user-register' and text()='Register']");
+
 
     public HomePage(final WebDriver driver) {
         this.driver = driver;

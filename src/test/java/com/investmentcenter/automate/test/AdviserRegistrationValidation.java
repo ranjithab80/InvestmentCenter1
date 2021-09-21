@@ -1,5 +1,7 @@
 package com.investmentcenter.automate.test;
 
+import java.io.IOException;
+
 import com.investmentcenter.automate.BaseUtil.SeleniumDriver;
 import com.investmentcenter.automate.pageobjects.HomePage;
 import com.investmentcenter.automate.pageobjects.RegistrationPage;
@@ -8,14 +10,13 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 public class AdviserRegistrationValidation extends SeleniumDriver {
-    private WebDriver driver;
     private static final Logger LOG = LogManager.getLogger(AdviserRegistrationValidation.class.getName());
+    private WebDriver driver;
     private RegistrationPage registrationPage = null;
 
     @BeforeTest
@@ -32,9 +33,14 @@ public class AdviserRegistrationValidation extends SeleniumDriver {
 
     }
 
+    @AfterTest
+    public void tearDown() {
+        driver.quit();
+        LOG.info("Browser is closed!!");
+    }
+
     @Test
     public void shouldTestRegistrationPageTitle() {
-        //  driver.get(getProperties().getProperty("url"));
         LOG.info("title :", registrationPage.getRegTitle().getText());
         Assert.assertEquals(registrationPage.getRegTitle().getText(), "Adviser registration");
     }

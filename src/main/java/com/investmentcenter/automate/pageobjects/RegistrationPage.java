@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 public class RegistrationPage {
 
     private WebDriver driver;
-    private By regTitle = By.cssSelector(".form-horizontal > h1:nth-child(2)");
+    private By regTitle = By.xpath("//form[@class='form-horizontal']//h1[text()='Adviser registration']");
     private By fsrNo = By.id("FSRNumber_TextBox");
     private By submit = By.name("AdviserRegsitration_Login");
     private By fsrEmptyErrorMsg = By.cssSelector("span[class='field-validation-error']");
