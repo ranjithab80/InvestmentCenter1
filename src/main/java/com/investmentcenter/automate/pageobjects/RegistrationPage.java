@@ -27,7 +27,7 @@ public class RegistrationPage {
     }
 
     public WebElement getSubmit() {
-        return (driver.findElement(submit));
+        return driver.findElement(submit);
     }
 
     public WebElement getFsrEmptyErrorMessage() {
